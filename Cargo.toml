@@ -1,0 +1,9 @@
+[package]
+name = "saql"
+version = "0.0.0-dev"
+edition = "2021"
+
+[dependencies]
+crossterm = "0.28.1"
+postgres = "0.19.9"
+ratatui = "0.29.0"
