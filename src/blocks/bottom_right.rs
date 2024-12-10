@@ -28,7 +28,7 @@ impl Widget for BottomRightTab {
     fn render(self, area: Rect, buf: &mut Buffer) {
         Block::bordered()
             .border_style(Style::new().fg(self.stroke_color))
-            .title("Top Right Block")
+            .title("Bottom Right Block")
             .render(area, buf);
     }
 }

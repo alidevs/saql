@@ -2,7 +2,7 @@ use ratatui::{
     buffer::Buffer,
     layout::Rect,
     style::{Color, Style},
-    widgets::{Block, Widget},
+    widgets::{Block, HighlightSpacing, List, ListState, StatefulWidget},
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -24,11 +24,20 @@ impl Default for LeftTab {
     }
 }
 
-impl Widget for LeftTab {
-    fn render(self, area: Rect, buf: &mut Buffer) {
-        Block::bordered()
+impl StatefulWidget for LeftTab {
+    type State = ListState;
+
+    fn render(self, area: Rect, buf: &mut Buffer, state: &mut Self::State) {
+        let block = Block::bordered()
             .border_style(Style::new().fg(self.stroke_color))
-            .title("Top Right Block")
-            .render(area, buf);
+            .title("Left Block");
+
+        let items = ["Item 1", "Item 2", "Item 3", "Item 4"];
+
+        List::new(items)
+            .block(block)
+            .highlight_symbol(">>")
+            .highlight_spacing(HighlightSpacing::Always)
+            .render(area, buf, state);
     }
 }

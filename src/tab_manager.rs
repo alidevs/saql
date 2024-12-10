@@ -1,9 +1,8 @@
-use std::task::Wake;
-
 use ratatui::style::Color;
 
 use crate::blocks::{BottomRightTab, LeftTab, TopRightTab};
 
+#[derive(Debug, Default)]
 pub struct TabManager {
     pub current_tab: TabKind,
     pub left_tab: LeftTab,
@@ -11,8 +10,9 @@ pub struct TabManager {
     pub bottom_right_tab: BottomRightTab,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Default, Copy, PartialEq, Eq)]
 pub enum TabKind {
+    #[default]
     Left,
     TopRight,
     BottomRight,

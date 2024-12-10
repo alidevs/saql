@@ -4,6 +4,8 @@ pub enum AppEvent {
     Quit,
     NextTab,
     PrevTab,
+    Up,
+    Down,
     None,
 }
 
@@ -19,6 +21,8 @@ fn handle_key_event(key: KeyEvent) -> AppEvent {
         KeyCode::Char('q') | KeyCode::Esc => AppEvent::Quit,
         KeyCode::Char('h') | KeyCode::Up => AppEvent::PrevTab,
         KeyCode::Char('l') | KeyCode::Down => AppEvent::NextTab,
+        KeyCode::Char('j') => AppEvent::Down,
+        KeyCode::Char('k') => AppEvent::Up,
         _ => AppEvent::None,
     }
 }
